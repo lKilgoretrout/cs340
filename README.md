@@ -1,4 +1,3 @@
-# cs340
 Online Eric Roberts Database
 
 Eric Roberts has starred in 628 movies and a dozen or so new movies each
