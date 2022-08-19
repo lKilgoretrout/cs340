@@ -23,6 +23,7 @@ using FOREIGN KEY (genreConst) REFERENCES Genres (gConst)
 Actors
 nConst INT, AUTO_INCREMENT, UNIQUE, NOT NULL, PRIMARY KEY
 primaryName VARCHAR NOT NULL
+
 ...
 relationship: M:M relationship between Actors and Movies
 1:M relationship between Actors and Characters
@@ -30,6 +31,7 @@ Actors_movies (M:M, matches an actor and the movie(s) that they are best known f
 actorMovieID INT, AUTO_INCREMENT, UNIQUE, NOT NULL, PRIMARY KEY
 nameConst INT
 knownForTitle INT
+
 ...
 relationship: M:M between Actors and Movies
 Using FOREIGN KEY(knownForTitle) that REFERENCES Movies(tConst)
@@ -37,6 +39,7 @@ and FOREIGN KEY(nameConst) that REFERENCES Actors(nConst)
 Characters (the characters that appear in movies)
 characterConst INT AUTO_INCREMENT, NOT NULL, PRIMARY KEY
 character VARCHAR
+
 ...
 relationship: 1:M between Actors and Characters
 Actors_characters (bridge table between actors and the roles they play in a
@@ -49,5 +52,6 @@ Genres(genres of movies, e.g. action, horror, comedy (each movie only has one
 genre))
 gConst INT, AUTO_INCREMENT, UNIQUE, NOT NULL, PRIMARY KEY
 genreName VARCHAR
+
 ...
 relationship: 1:M, matching Genres and Movies
