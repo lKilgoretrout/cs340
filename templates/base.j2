@@ -1,0 +1,52 @@
+
+<html>
+    <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+      
+	  
+      <title>IOERD</title>
+ 
+	</head>
+    
+	<body>
+
+	    <img id="ERunicorn" src="/static/EricRobertsUnicorn.jpg" width=5% alt="team unicorn">
+
+        <div class="nav">
+            <a {% if request.path == url_for('index') %} class='active' {% endif %} href="{{ url_for('index') }}">Home</a>
+            <a {% if request.path == url_for('movies') %} class='active' {% endif %} href="{{ url_for('movies') }}">Movies</a>
+            <a {% if request.path == url_for('genres') %} class='active' {% endif %} href="{{ url_for('genres') }}">Genres</a>
+            <a {% if request.path == url_for('characters') %} class='active' {% endif %} href="{{ url_for('characters') }}">Characters</a>
+            <a {% if request.path == url_for('actors') %} class='active' {% endif %} href="{{ url_for('actors') }}">Actors</a>
+            <a {% if request.path == url_for('actors_movies') %} class='active' {% endif %} href="{{ url_for('actors_movies') }}">Actors_movies</a>
+        </div> 
+
+        <div class='flashMessageContainer'>
+            {% for category, flash in get_flashed_messages(with_categories=true) %}
+            <div class={{ category }} >
+                {% if category == 'error' %} 
+                    <img id="ERsurprised" src="/static/ER_surprised_erdb.png" alt="team unicorn">
+                {% elif category == 'success' %} 
+                    <img id="ERhappy" src="/static/ER_grin_erdb.png" alt="team unicorn">
+                {% endif %}
+                <H3>{{ flash }}</H3>
+            </div>
+            {% endfor %}
+        </div>
+
+
+        
+        {% block content %} 
+        
+        {% endblock %}
+        
+        
+        
+    </body>
+</html>
+
+
+
+
+

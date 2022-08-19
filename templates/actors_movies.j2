@@ -1,0 +1,82 @@
+{% extends 'base.j2' %}
+{% block content %}
+
+    <div class='page_container'>
+        <div class='text_container'>
+        
+            <b>ACTOR-MOVIE RELATIONSHIPS</b>
+            <p>The most important metric for actors is the number of films they have starred in.  For (completely random) example, 
+            Julia Roberts has only starred in a mere ~60 movies.  Eric Roberts has starred in over 600. </p>
+
+            <p>Here you can <b>SEARCH</b> movies by actor.  You can also <b>INSERT</b> new actor-movie pairs. Only existing movies can be paired with existing actors.  Any new
+            actors or movies must be inserted from their respective pages on the IOERD site. </p>
+            
+            <p>To SEARCH the database, select the name of an actor into the field, click "Fire at Will!" and let 
+            the internet do its magic!</p>
+        </div>
+        <form class="actors_movies" action="{{ url_for('actors_movies') }}" method='post'>
+            <fieldset>
+                <legend>Query: Search Database</legend>
+                <p>
+                    <label>Actor:
+                        <input type="text" name="primaryName" size="30" maxlength="100">
+                    </label>
+                    <br>
+                </p>
+                <br>
+                <input id="submit_search_actor" type="submit" value="Fire at Will!" />
+            </fieldset>
+            </form><br><br>
+
+        <div class='text_container'>
+            <p>To INSERT a pair into the database, select a movie from the Movies dropdown, select an actor from the Actors dropdown, 
+            and click "Add Pair". </p>
+            <p>To DELETE a pair from the database, follow the same steps and then click "Delete Pair." </p>
+        </div>
+        
+        <form class="actors_movies" action="{{ url_for('actors_movies') }}" method='post'>
+        <fieldset>
+            <legend>Query: Insert into Database</legend>
+            <p>
+                <label for="select_movie">Select a movie</label>
+                <select name="select_movie">
+                    <option value="default">-Choose one-</option>
+                    {% for m in movies %}
+                    <option value='{{m.primaryTitle}}'>{{m.primaryTitle}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <br>
+                <label for="select_actor">Select an actor</label>
+                <select name="select_actor">
+                    <option value="default">-Choose one-</option>
+                    {% for a in actors %}
+                    <option value='{{a.primaryName}}'>{{a.primaryName}}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <br>
+            <input name="submit" type="submit" value="ADD PAIR" />
+            <input name="submit" type="submit" value="DELETE PAIR" />
+        </fieldset>
+        </form>
+
+        <table>
+            <caption>Actor/Movie Relationships</caption>
+            <thead>
+              <tr>
+                <th>ACTOR</th>
+                <th>TITLE</th>
+              </tr>
+            </thead>
+		<tbody>
+            {% for value in values %}
+            <tr>
+               <td>{{value.primaryName}}</td>
+               <td>{{value.primaryTitle}}</SPAN></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script src="{{ url_for('static', filename='horizontalRoberts.js') }}"></script>
+{% endblock %}

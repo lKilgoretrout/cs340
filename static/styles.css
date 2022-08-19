@@ -1,0 +1,98 @@
+/* for the nav bar */
+
+
+.nav {
+  overflow: hidden;
+  background-color: #3333cc;
+}
+
+.nav a {
+  float: left;
+  color: gray;
+  text-align: center;
+  padding: 4px 5px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.nav a:hover {
+  background-color: #8533ff;
+  color: white;
+}
+
+.nav a.active {
+  background-color: #ff00ff;
+  color: white;
+}
+
+
+table {
+    table-layout: auto;
+    width: 50%;
+    border-collapse: collapse;
+    border: 1px solid purple;
+	background-color: lavender;
+}
+
+table.smallTable {
+  width: 25%;
+  display: inline-block;
+}
+
+#genresLeftTable, #charactersLeftTable {
+  /*display these horizontally*/
+  float: left;
+  margin-right: 5%;
+}
+
+caption {
+  font-size: xx-large;
+  background-color: lavender;
+}
+
+th.movies, td.movies, th.genres, td.genres {
+	text-align: left;
+	border-collapse: collapse;
+    border: 1px solid purple;
+}
+
+form.movies, form.genres, form.actors, form.actors_movies, form.characters {
+	width: 20%;
+	margin: auto;
+	display:inline-block;
+	line-height: 15px;
+	background-color: rebeccapurple;
+	font-size:x-small;
+	color: lavender;	
+}
+
+
+
+div.movies, div.page_container {
+	background-image: url('/static/ericRobertsBust.jpg');	
+}
+
+div.text_container {
+  margin-right: 50%;
+  background-color: lavender;
+  border: 1px solid purple;
+}
+
+p.index, 
+h1.index,
+h2.index,
+b.index,
+p.index,
+span.index
+ {
+	font-size:x-small;
+	background-color:lavender;
+}
+
+.error {
+  color: rgb(70, 1, 1);
+}
+
+.success {
+  color: rgba(0, 128, 0, 0.616);
+}

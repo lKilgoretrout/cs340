@@ -1,0 +1,96 @@
+{% extends 'base.j2' %}
+{% block content %}
+
+	<div class='page_container'>
+
+		<div class='text_container'>
+	
+			<b>CHARACTERS</b>
+			<p>Here you can <b>SEARCH</b> ER movies by character, and even <b>INSERT</b> new characters! </p>
+			
+			<p>To SEARCH the database, select the name of a character into the field, click "RELEASE THE KRAKEN" and let 
+				the internet do its magic!</p><br><br>
+
+			<p>To INSERT into the database, enter the name of a character, the name of the actor playing
+				that character, the name of the film, and click "SON, THIS WILL BUILD CHARACTER"
+			</p>
+		</div>
+		<form class='characters' action="{{ url_for('characters') }}" method='post'>
+			<fieldset>
+				<legend><H3>Query: Search Database</H3></legend>
+				<p>
+					<label>Character:
+						<input type="text" name="characterName" size="30" maxlength="100">
+					</label>
+					<br>
+				</p>
+				<br>
+				<input id="submit_search_character" type="submit" value="RELEASE THE KRAKEN" />
+			</fieldset>
+			</form>
+		
+		<form class='characters' action="{{ url_for('characters') }}" method='post'>
+			<fieldset>
+				<legend><H3>Query: Insert into Database</H3></legend>
+				<p>
+					<label>New Character:
+						<input type="text" name="characterName" size="30" maxlength="100">
+					</label>
+					<br>
+					<label for="primaryName">Played by (actor)</label>
+					<select name="primaryName">
+					<option value="default">-Choose one-</option>
+					{% for a in actors %}
+						<option value='{{a.primaryName}}'>{{a.primaryName}}</option>
+					{% endfor %}
+					</select>
+					<br>
+					<label for="primaryTitle">Movie:</label>
+					<select name="primaryTitle">
+					<option value="default">-Choose one-</option>
+					{% for m in movies %}
+						<option value='{{m.primaryTitle}}'>{{m.primaryTitle}}</option>
+					{% endfor %}
+					</select>
+					<br>
+				</p>
+				<br>
+				<input id="submit_insert_charactor" type="submit" value="THIS WILL BUILD CHARACTER" />
+			</fieldset>
+			</form><br><br>
+
+            <table class='smallTable' id='charactersLeftTable'>
+                <caption>List of Characters</caption>
+                <thead>
+                <tr class='character'>
+                    <th>CHARACTER (sorted by most recently added)</th>
+                </tr>
+                </thead>
+            <tbody>
+                {% for value in characters %}
+                <tr class='character'>
+                <td>{{value.characterName}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+		<table>
+			<caption>Movies by Character</caption>
+			<thead>
+			<tr>
+				<th>CHARACTER</th>
+				<th>TITLE</th>
+			</tr>
+			</thead>
+		<tbody>
+			{% for value in values %}
+			<tr>
+			<td>{{value.characterName}}</td>
+			<td>{{value.primaryTitle}}</SPAN></td>
+			</tr>
+			{% endfor %}
+		</table>
+
+	</div>
+	<script src="{{ url_for('static', filename='horizontalRoberts.js') }}"></script>
+{% endblock %}

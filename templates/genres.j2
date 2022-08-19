@@ -1,0 +1,85 @@
+{% extends 'base.j2' %}
+{% block content %}
+
+    <div class='page_container'>
+
+        <div class='text_container'>
+            
+            <b>GENRES</b>
+            <p>Has Eric Roberts starred in each genre ever created? Find out below!</p>
+            <p>Here you can <b>SEARCH</b> existing ER movies by genre, and even <b>INSERT</b> new genres! Your help adding genres is needed due to 
+                ER's overwhelming output.</p>
+            
+            <p>To SEARCH the database, select a genre from the drop down menu, click "RELEASE THE KRAKEN" and let 
+                the internet do its magic!</p>
+
+            <p>To INSERT into the database, enter the name of a genre into the field, and click "IS THIS REALLY A GOOD IDEA?"
+            </p>
+        </div>
+            
+        <form class='genres' action="{{ url_for('genres') }}" method='post'>
+            <fieldset>
+                <legend><H3>Query: Search Database</H3></legend>
+                <p>
+                    <label for="search_by_genre">Search by genre</label>
+                    <select name="search_by_genre">
+                    <option value="default">-Choose one-</option>
+                    {% for g in genres %}
+                        <option value='{{g.genreName}}'>{{g.genreName}}</option>
+                    {% endfor %}
+                    </select>
+                </p>
+                <br>
+                <input id="submit_search_genre" type="submit" value="RELEASE THE KRAKEN" />
+            </fieldset>
+        </form>
+            
+        <form class='genres' action="{{ url_for('genres') }}" method='post'>
+            <fieldset>
+                <legend><H3>Query: Insert into Database</H3></legend>
+                <p>
+                    <label>New Genre:
+                    <input type="text" name="genreName" size="30" maxlength="100">
+                    </label>
+                </p>
+                <br>
+                <input id="submit_insert_genre" type="submit" value="IS THIS REALLY A GOOD IDEA?" />
+            </fieldset>
+        </form><br><br>
+
+            <table class='smallTable' id='genresLeftTable'>
+                <caption>List of genres</caption>
+                <thead>
+                <tr class='genre'>
+                    <th>GENRE (sorted by most recently added)</th>
+                </tr>
+                </thead>
+            <tbody>
+                {% for value in genres %}
+                <tr class='genre'>
+                <td>{{value.genreName}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <table class='genres'>
+                <caption>Movies by genre</caption>
+                <thead>
+                <tr class='genre'>
+                    <th>GENRE</th>
+                    <th>TITLE</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for value in values %}
+                <tr class='genre'>
+                <td>{{value.genreName}}</td>
+                <td>{{value.primaryTitle}}</SPAN></td>
+                </tr>
+                {% endfor %}
+            </table>
+    </div>
+
+    <script src="{{ url_for('static', filename='horizontalRoberts.js') }}"></script>
+{% endblock %}		
+  

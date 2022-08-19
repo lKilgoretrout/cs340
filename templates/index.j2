@@ -1,0 +1,29 @@
+{% extends 'base.j2' %}
+{% block content %}
+
+<div class="movies">       
+        
+		<h1>INTERACTIVE ONLINE ERIC ROBERTS DATABASE</h1>
+		 
+        <span class="index">WELCOME to the home away from home for Eric Roberts fans, the IOERD</span> <br><br>
+		
+		<b class="index">WHAT IS THE IOERD ?!?</b><br> 
+		<span class="index">The IOERD (pronounced "eye-ore-d") is an online database of  movies that <br>
+        Eric Roberts, the greatest actor to have every graced the face of the planet, <br>
+        has starred in.  ER is a prolific actor and has been in some 600 plus movies, many of which  <br>
+        went straight to DVD.  The IOERD is created from a subset of of the Internet Movie Database's dataset and <br>
+        allows the browser of the site to create, remove, update and delete movies by attributes such as title, year, genre, and character name.</span>
+		
+		<br>
+		<br>
+        <h2> What can you do on each page ?</h2>
+		
+        <b class="index">Movies</b><span class="index"> Search, update, insert or delete by title or year. Filter by genre. </span><br><br>
+        <b class="index">Actors</b><span class="index"> Search by actor or insert another actor </span><br><br>
+        <b class="index">Characters</b><span class="index"> Search by name of character or insert another character </span><br><br>
+        <b class="index">Genres</b><span class="index"> Search by genre. Our genres aren't good enough? add another! </span><br><br>
+		<b class="index">Actors_Movies</b><span class="index"> An index of actors and the movies that they have been in</span><br><br>
+</div>
+
+<script src="{{ url_for('static', filename='horizontalRoberts.js') }}"></script>
+ {% endblock %}
