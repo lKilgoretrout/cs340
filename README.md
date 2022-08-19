@@ -16,6 +16,7 @@ tConst INT, AUTO_INCREMENT, UNIQUE, NOT NULL, PRIMARY KEY
 primaryTitle VARCHAR
 startYear INT
 genreConst INT
+
 ...
 relationship: a M:M relationship between Movies and Actors
 a M:1 relationship between Movies and Genres
@@ -24,6 +25,7 @@ Actors
 nConst INT, AUTO_INCREMENT, UNIQUE, NOT NULL, PRIMARY KEY
 primaryName VARCHAR NOT NULL
 
+
 ...
 relationship: M:M relationship between Actors and Movies
 1:M relationship between Actors and Characters
@@ -31,6 +33,7 @@ Actors_movies (M:M, matches an actor and the movie(s) that they are best known f
 actorMovieID INT, AUTO_INCREMENT, UNIQUE, NOT NULL, PRIMARY KEY
 nameConst INT
 knownForTitle INT
+
 
 ...
 relationship: M:M between Actors and Movies
